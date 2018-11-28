@@ -27,10 +27,10 @@ latlon2cell <- function(lat,lon,cellsize){
 
 ## make a raster in WGS84 with the extent of
 ## lat = 37, 46 and long = -72, -63 to match Dan's previous analysis.
-## we also want the resolution to be .009009009 x .009009009
-## .009009009 is equivalent to 1 km pixels.  In the end
+## we also want the resolution to be 9/999 x 9/999
+## 9/999 is equivalent to 1 km pixels.  In the end
 ## the raster should have 999 rows and 999 columns.
-r <- raster(ext = extent(-72, -63, 37, 46), res=c(0.009009009,0.009009009)) ## this needs to be changed to 360/8640 this should be the number of degrees per pixel (4 km grid cell size)
+r <- raster(ext = extent(-72, -63, 37, 46), res=c(9/999,9/999)) 
 p <- rasterToPolygons(r) 
 
 ## write the raster of the whole area with no 1's to a tif file
@@ -208,7 +208,7 @@ nestates <- c("Maine", "Massachusetts", "New Hampshire" ,"Connecticut",
 ne = us[match(toupper(nestates),toupper(us$NAME_1)),]
 
 
-r <- raster(ext = extent(-72, -63, 37, 46), res=c(0.009009009,0.009009009))
+r <- raster(ext = extent(-72, -63, 37, 46), res=c(9/999,9/999))
 ## this takes the GOM grid that is a square and includes land and deep water
 ## it then takes the bathyfile that dan sent me and turns anything deeper 
 ## then 700 (m?) and turns it to 0, and anything greater than 0 (land) 
@@ -257,10 +257,10 @@ gplot(r1) +
 
  ## make a raster in WGS84 with the extent of
  ## lat = 37, 46 and long = -72, -63 to match Dan's previous analysis.
- ## we also want the resolution to be 0.0416667 X 0.04166667
+ ## we also want the resolution to be 360/8640 X 360/8640
  ## which is equivalent to 4.6 km pixels.  In the end
  ## the raster should have 216 rows and 216 columns.
- r <- raster(ext = extent(-72, -63, 37, 46), res=c(0.04166667,0.04166667))
+ r <- raster(ext = extent(-72, -63, 37, 46), res=c(360/8640,360/8640))
  p <- rasterToPolygons(r) 
  
  ## write the raster of the whole area with no 1's to a tif file
@@ -395,10 +395,10 @@ gplot(r1) +
  ##########################
  
  ## 1 km grid
- r1 <- raster(ext = extent(-72, -63, 37, 46), res=c(0.009009009,0.009009009)) 
+ r1 <- raster(ext = extent(-72, -63, 37, 46), res=c(9/999, 9/999)) 
  
  ## 4 km grid
- r <- raster(ext = extent(-72, -63, 37, 46), res=c(0.04166667,0.04166667))
+ r <- raster(ext = extent(-72, -63, 37, 46), res=c(360/8640,360/8640))
  
  ## make everything in r a 0
  r1[] <-0
@@ -416,8 +416,8 @@ gplot(r1) +
  
  
  ## what happens in the top left corner of the main grid (-72, -63, 37, 46)
- r1 <- raster(ext = extent(-72, -63, 37, 46), res=c(0.009009009,0.009009009)) 
- r <- raster(ext = extent(-72, -63, 37, 46), res=c(0.04166667,0.04166667))
+ r1 <- raster(ext = extent(-72, -63, 37, 46), res=c(9/999, 9/999)) 
+ r <- raster(ext = extent(-72, -63, 37, 46), res=c(360/8640,360/8640))
  r1[] <- 0
  r[] <- 0
  ex <- extent(-72, -71.5, 45.5, 46.0)
@@ -433,13 +433,13 @@ gplot(r1) +
  ## Make sure the global grid and our grid overlap
  ## make a global grid with extent -180 long and 90 lat with cell 
  ## size 360/8640 = 0.04166667 for 4.6 km grid
- global.grid <- raster(ext = extent(-180, 0, 0, 90), res=c(0.04166667, 0.04166667))
+ global.grid <- raster(ext = extent(-180, 0, 0, 90), res=c(360/8640,360/8640))
  global.grid.raster <- writeRaster(global.grid,
                                    filename = "/Users/laura.ganley001/Documents/R_Projects/eg_risk_assessment/global.grid.4.6km", format = 'GTiff', overwrite = TRUE)
 
  
  ## OUR 4 km grid
- r <- raster(ext = extent(-72, -63, 37, 46), res=c(0.04166667,0.04166667))
+ r <- raster(ext = extent(-72, -63, 37, 46), res=c(360/8640,360/8640))
  
  ## make everything in r and the global grid a 0
  r[] <-0 
