@@ -267,7 +267,10 @@ gplot(r1) +
  writeRaster(r, 
              filename = "/Users/laura.ganley001/Documents/R_Projects/eg_risk_assessment/grid.4km.lat37.46.long72.63", format = 'GTiff', overwrite = TRUE)
  
- 
+ ##write to a poly
+ writeOGR(p, dsn = '/Users/laura.ganley001/Documents/R_Projects/eg_risk_assessment/', layer = 'whole.grid.poly.4',
+          driver = "ESRI Shapefile")
+
  ########
  ########
  ## CCB DOMAIN
