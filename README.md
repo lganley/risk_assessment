@@ -7,4 +7,5 @@ that this grid was too fine scale for the data and we were getting false positiv
 Particularly around Provincetown there were instances of vessels lighting up grid 
 cells that they should not (for example, ferries were showing up in grid cells off Race Point
 where they likely were not present).  So, we decided to increase the grid cell size to soak up some of these errors. 
-The grid that is ~4.6 km lines up with the data that Dan already has.  
+The grid that is ~4.6 km lines up with the data that Dan already has.  Jeff is going to give us AIS data based on
+the shapefile "whole.grid.poly.4".  
