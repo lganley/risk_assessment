@@ -19,3 +19,6 @@ cells that they should not (for example, ferries were showing up in grid cells o
 where they likely were not present).  So, we decided to increase the grid cell size to soak up some of these errors. 
 The grid that is ~4.6 km lines up with the data that Dan already has.  Jeff is going to give us AIS data based on
 the shapefile "whole.grid.poly.4".  
+
+### pleth_clusters.R
+file has code to compute the probability of a lethal shipe strike for each grid cell as described by Wiley et al. 2011.  This code uses the logistic model described in Vanderlaan et al. 2007 to convert the mean sog of each vessel to a probaility of a lethal strike if a vessel should hit a whale.  This file is meant to be run on the ghpcc.  
